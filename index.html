@@ -40,7 +40,7 @@
       margin: 50px auto;
       padding: 30px;
       text-align: center;
-      border-radius: 15px;
+      border-radius: 20px;
       background-color: var(--primary-color);
       border: 1px solid var(--tertiary-color);
     }
@@ -108,15 +108,15 @@
       margin: 45px auto;
       padding: 30px;
       background-color: #fff;
-      border-radius: 10px;
+      border-radius: 15px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 10px;
     }
 
    .rsvp-form fieldset {
-      margin-bottom: 20px;
+      margin-bottom: 0px;
       border: none;
       padding: 0;
     }
@@ -147,6 +147,7 @@
    .rsvp-form input,
    .rsvp-form textarea {
       padding: 10px;
+      padding-left: 30px;
       border: 0.3px solid #292b2e29;
       border-radius: 10px;
       width: 100%;
@@ -155,30 +156,55 @@
       transition: border-color 0.2s ease-in;
     }
 
+    .rsvp-form .message input,
+   .rsvp-form .message textarea {
+      padding: 10px;
+      border: 0.3px solid #292b2e29;
+      border-radius: 10px;
+      width: 100%;
+      background-color: #fff;
+      appearance: none;
+      transition: border-color 0.2s ease-in;
+    }
+
+    .rsp-form input[type="text"] {
+    padding-left: 30px; /* adjust the value to your liking */
+}
+
     .rsvp-form input:focus,
    .rsvp-form textarea:focus {
       border: 0.3px solid #292b2e97;
     }
 
     
-   .rsvp-form input[type="submit"] {
+    .rsvp-form button[type="submit"] {
       background-color: var(--secondary-color);
       color: #fff;
-      padding: 10px 20px;
       border: none;
-      border-radius: 0 0 10px 0; /* Rounded bottom right corner */
+      border-radius: 20px; /* Increased border radius for a more rounded button */
       cursor: pointer;
       transition: background-color 0.2s ease-in;
+      width: 30%; /* Set width to auto to prevent full-width button */
+      margin: 0 auto; /* Center the button horizontally */
+      display: block; /* Make the button a block element */
+      margin-top: 10px; /* Add some margin at the top */
+      margin-right: 0; /* Remove the right margin */
+      padding: 10px;
+      font-size: smaller;
+      font-family: var(--font-body);
+      font-weight: bold;
     }
 
-   .rsvp-form input[type="submit"]:hover {
-      background-color: var(--tertiary-color);
+   .rsvp-form button[type="submit"]::after {
+        font-family: 'Font Awesome 5 Free';
+        content: '\f1d8'; /* Send icon (airplane) */
+        margin-left: 10px;
+        color: #ffffffdf
     }
 
-   .rsvp-form input[type="submit"]::after {
-      font-family: 'Font Awesome 5 Free';
-      content: '\f1d8'; /* Send icon */
-      margin-left: 10px;
+    /* Add a hover effect to the button */
+   .rsvp-form button[type="submit"]:hover {
+        background-color: var(--tertiary-color);
     }
 
    .cta-button {
@@ -204,6 +230,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 08px;
     }
 
     .hero-logo {
@@ -214,23 +243,30 @@
 
     .hero-text {
       font-size: 24px;
-      font-weight: bold;
+      font-weight: normal;
       color: var(--secondary-color);
+      font-family: var(--font-title);
+      align-self: center !important;
+      justify-self: center !important;
+      display: flex;
+      align-items: center !important;
+      justify-content: center !important;
     }
 
     .banner {
-      margin-top: 20px;
+      margin-top: 35px;
       position: relative;
       width: 100%;
-      height: 200px; /* Ajustez la hauteur selon vos besoins */
+      height: 280px; /* Ajustez la hauteur selon vos besoins */
       overflow: visible;
+      padding: 05px;
     }
 
     .banner img {
       width: 100%;
       height: 100%;
       object-fit: cover; /* Pour que l'image couvre entièrement la div */
-      filter: brightness(84%); /* Ajouter un filtre de luminosité */
+      filter: brightness(80%); /* Ajouter un filtre de luminosité */
       border-radius: 15px;
     }
 
@@ -250,6 +286,42 @@
       font-weight: bold !important;
     }
 
+    .input-placeholder-icon {
+        background-image: url('https://icones8.fr/icon/9660/call');
+        background-size: 20px 20px; /* Ajustez la taille de l'icône */
+        background-position: 10px center; /* Ajustez la position de l'icône */
+        padding-left: 40px; /* Ajustez cet espacement en fonction de la taille de votre icône */
+    }
+
+    .input-icon {
+        position: relative;
+    }
+    .input-icon input[type="text"] {
+        padding-left: 30px; /* Ajustez cet espacement en fonction de la taille de votre icône */
+    }
+
+    .input-icon i {
+        position: absolute;
+        left: 5px; /* Ajustez la position de l'icône */
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .input-icon i {
+        background-color: #fff;
+        color: var(--tertiary-color);
+        opacity: 0.5;
+        border-width: 1px;
+    }
+
+    .input-icon i .question {
+        background-color: #fff;
+        color: var(--tertiary-color);
+        opacity: 0.5;
+        border-width: 1px;
+    }
+
+    
 
 </style>
 
@@ -278,30 +350,43 @@
     <span class="location">19 rue Notre Dame de Nazareth, 75003 Paris</span>
   </div>
   <p class="description">Join us for a day of learning and networking at the AI Summit. Hear from industry experts and connect with like-minded professionals.</p>
-  <form class="rsvp-form" method="post" action="/invitation">
+  <form class="rsvp-form" method="post" action="/save_to_excel.php">
     <fieldset aria-label="Invitation Details">
       <legend>Invitation Details</legend>
       <div>
         <label for="name">Nom et prénom:</label>
-        <input type="text" id="name" name="name" placeholder="Votre nom et prénom">
+        <div class="input-icon">
+        <i class="fas fa-user info-icon"></i>
+        <input type="text" id="name" name="name" placeholder="Votre nom et prénom" required>
+        </div>
       </div>
       <div>
         <label for="email">E-mail:</label>
-        <input type="email" id="email" name="mail" placeholder="votre@email.com">
+        <div class="input-icon">
+        <i class="fas fa-at info-icon"></i>
+        <input type="email" id="email" name="mail" placeholder="votre@email.com" required>
+        </div>
       </div>
       <div>
         <label for="phone">Téléphone:</label>
-        <input type="tel" id="phone" name="téléphone" placeholder="06.26.56.89.23">
+        <div class="input-icon">
+        <i class="fas fa-at info-icon"></i>
+        <input type="tel" id="phone" name="téléphone" placeholder="06.26.56.89.23" class="input-placeholder-icon" required>
+        </div>
       </div>
     </fieldset>
-    <fieldset aria-label="Message">
-      <legend>Message</legend>
+    <fieldset aria-label="Message" class="message">
       <div>
         <label for="message">Message:</label>
-        <textarea id="message" name="message" placeholder="Your message..."></textarea>
+        <div class="input-icon">
+        <textarea id="message" name="message" placeholder="Votre message... (optionnel)"></textarea>
+        </div>
       </div>
     </fieldset>
-    <input type="submit" value="Send Invitation">
+    <button type="submit" value="Send Invitation" class="submit-button">
+      Envoyer <!-- <i class="fas fa-arrow-alt-circle-right icon"></i> -->
+    </button>
+  </div>
   </form>
   <div class="bottom-img">
     <img src="logo.png" alt="Genesis logo" style="width:13rem; height:13rem;">
