@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Invitation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+
+<style>
+
+    /* Global Styles */
+    :root {
+      --primary-color: #FBFAFA;
+      --secondary-color: #292B2E;
+      --tertiary-color: #535E5F;
+      --font-title: 'Libre Baskerville', serif;
+      --font-body: 'Raleway', sans-serif;
+      --spacing-unit: 8px;
+    }
+
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--secondary-color);
+      font-size: 16px; /* Set a base font size */
+      line-height: 1.5; /* Set a base line height */
+    }
+
+    .corps {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      text-align: center;
+      border-radius: 20px;
+      background-color: var(--primary-color);
+      border: 1px solid var(--tertiary-color);
+    }
+
+    /* Invitation Styles */
+   .event-invitation {
+      background-color: var(--primary-color);
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 10px;
+      text-align: center;
+    }
+
+   .event-invitation h1 {
+      font-family: var(--font-title);
+      font-size: 2rem; /* Use rem units for font sizes */
+      margin-bottom: 1.5rem; /* Use a consistent spacing system */
+      color: var(--secondary-color);
+    }
+
+  
+
+   .event-invitation p {
+      margin-bottom: 1rem;
+    }
+
+   .description {
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Info Styles */
+   .info {
+      display: flex;
+      align-items: center;
+      justify-content: left; /* Add this to center the info div */
+      max-width: 500px; /* Set a max width to match the form width */
+      margin: 20px auto; /* Add whitespace around the info div */
+    }
+
+   .info-icon {
+      font-size: 0.7rem; /* Make the icon smaller */
+      margin-right: 10px; /* Add a small margin between the icon and text */
+      color: var(--primary-color);
+      background-color: var(--tertiary-color); /* Add a round background color */
+      border-radius: 50px; /* Make the background color round */
+      height: 20px;
+      width: 20px;
+      padding: 04px; /* Add some padding to the icon */
+      transition: all 0.1s ease-in;
+    }
+
+  
+
+   .info-label {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      color: var(--primary-color);
+    }
+
+    /* Form Styles */
+   .rsvp-form {
+      max-width: 500px;
+      margin: 45px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+   .rsvp-form fieldset {
+      margin-bottom: 0px;
+      border: none;
+      padding: 0;
+    }
+
+   .rsvp-form legend {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+    }
+
+   .rsvp-form div {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+   .rsvp-form label {
+      font-weight: bold;
+      font-family: var(--font-body);
+      color: var(--secondary-color);
+      font-size: 0.8rem;
+      text-align: left;
+      align-items: left;
+      margin-bottom: 0.1rem; /* Add margin bottom to label */
+    }
+
+   .rsvp-form input,
+   .rsvp-form textarea {
+      padding: 10px;
+      padding-left: 30px;
+      border: 0.3px solid #292b2e29;
+      border-radius: 10px;
+      width: 100%;
+      background-color: #fff;
+      appearance: none;
+      transition: border-color 0.2s ease-in;
+    }
+
+    .rsvp-form .message input,
+   .rsvp-form .message textarea {
+      padding: 10px;
+      border: 0.3px solid #292b2e29;
+      border-radius: 10px;
+      width: 100%;
+      background-color: #fff;
+      appearance: none;
+      transition: border-color 0.2s ease-in;
+    }
+
+    .rsp-form input[type="text"] {
+    padding-left: 30px; /* adjust the value to your liking */
+}
+
+    .rsvp-form input:focus,
+   .rsvp-form textarea:focus {
+      border: 0.3px solid #292b2e97;
+    }
+
+    
+    .rsvp-form button[type="submit"] {
+      background-color: var(--secondary-color);
+      color: #fff;
+      border: none;
+      border-radius: 20px; /* Increased border radius for a more rounded button */
+      cursor: pointer;
+      transition: background-color 0.2s ease-in;
+      width: 30%; /* Set width to auto to prevent full-width button */
+      margin: 0 auto; /* Center the button horizontally */
+      display: block; /* Make the button a block element */
+      margin-top: 10px; /* Add some margin at the top */
+      margin-right: 0; /* Remove the right margin */
+      padding: 10px;
+      font-size: smaller;
+      font-family: var(--font-body);
+      font-weight: bold;
+    }
+
+   .rsvp-form button[type="submit"]::after {
+        font-family: 'Font Awesome 5 Free';
+        content: '\f1d8'; /* Send icon (airplane) */
+        margin-left: 10px;
+        color: #ffffffdf
+    }
+
+    /* Add a hover effect to the button */
+   .rsvp-form button[type="submit"]:hover {
+        background-color: var(--tertiary-color);
+    }
+
+   .cta-button {
+      background-color: var(--secondary-color);
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin: 20px auto;
+      transition: background-color 0.2s ease-in;
+    }
+
+   .cta-button:hover {
+      background-color: var(--tertiary-color);
+    }
+
+    /* Hero Styles */
+    .hero {
+      background-color: var(--primary-color);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 08px;
+    }
+
+    .hero-logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .hero-text {
+      font-size: 24px;
+      font-weight: normal;
+      color: var(--secondary-color);
+      font-family: var(--font-title);
+      align-self: center !important;
+      justify-self: center !important;
+      display: flex;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .banner {
+      margin-top: 35px;
+      position: relative;
+      width: 100%;
+      height: 280px; /* Ajustez la hauteur selon vos besoins */
+      overflow: visible;
+      padding: 05px;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Pour que l'image couvre entièrement la div */
+      filter: brightness(80%); /* Ajouter un filtre de luminosité */
+      border-radius: 15px;
+    }
+
+    .titre {
+      position: absolute;
+      bottom: 10px;
+      right: 05px; 
+      color: var(--primary-color); 
+      font-family: var(--font-title);
+      font-size: 35px;
+      padding: 15px; 
+      text-align: right;
+      font-weight: normal;
+    }
+    .event-name {
+      color: var(--primary-color) !important; 
+      font-weight: bold !important;
+    }
+
+    .input-placeholder-icon {
+        background-image: url('https://icones8.fr/icon/9660/call');
+        background-size: 20px 20px; /* Ajustez la taille de l'icône */
+        background-position: 10px center; /* Ajustez la position de l'icône */
+        padding-left: 40px; /* Ajustez cet espacement en fonction de la taille de votre icône */
+    }
+
+    .input-icon {
+        position: relative;
+    }
+    .input-icon input[type="text"] {
+        padding-left: 30px; /* Ajustez cet espacement en fonction de la taille de votre icône */
+    }
+
+    .input-icon i {
+        position: absolute;
+        left: 5px; /* Ajustez la position de l'icône */
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .input-icon i {
+        background-color: #fff;
+        color: var(--tertiary-color);
+        opacity: 0.5;
+        border-width: 1px;
+    }
+
+    .input-icon i .question {
+        background-color: #fff;
+        color: var(--tertiary-color);
+        opacity: 0.5;
+        border-width: 1px;
+    }
+
+    
+
+</style>
+
+
+<div class="corps">
+  <div class="hero">
+    <img src="logohero.png" alt="Genesis logo" class="hero-logo">
+    <span class="hero-text">Genesis Studio</span>
+  </div>
+  
+  <div class="banner">
+    <img src="hero.jpeg" alt="Image de fond">
+    <h1 class="titre">Soirée d'inauguration du <span class="event-name">Studio Genesis</span></h1>
+  </div>
+  <div class="event-invitation">
+  <div class="info">
+    <i class="fas fa-calendar-alt info-icon"></i>
+    <span class="date">27 Juin, 2024</span>
+  </div>
+  <div class="info">
+    <i class="fas fa-clock info-icon"></i>
+    <span class="time">18h - 23h30</span>
+  </div>
+  <div class="info">
+    <i class="fas fa-map-marker-alt info-icon"></i>
+    <span class="location">19 rue Notre Dame de Nazareth, 75003 Paris</span>
+  </div>
+  <p class="description">Join us for a day of learning and networking at the AI Summit. Hear from industry experts and connect with like-minded professionals.</p>
+
+
+  <form class="rsvp-form" method="post" action="save_to_excel.php">
+    <fieldset aria-label="Invitation Details">
+      <legend>Invitation Details</legend>
+      <div>
+        <label for="name">Nom et prénom: </label>
+        <div class="input-icon">
+        <i class="fas fa-user info-icon"></i>
+        <input type="text" id="name" name="name" placeholder="Votre nom et prénom" required>
+        </div>
+      </div>
+      <div>
+        <label for="email">E-mail:</label>
+        <div class="input-icon">
+        <i class="fas fa-at info-icon"></i>
+        <input type="email" id="email" name="mail" placeholder="votre@email.com" required>
+        </div>
+      </div>
+      <div>
+        <label for="phone">Téléphone:</label>
+        <div class="input-icon">
+        <i class="fas fa-at info-icon"></i>
+        <input type="tel" id="phone" name="téléphone" placeholder="06.26.56.89.23" class="input-placeholder-icon" required>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset aria-label="Message" class="message">
+      <div>
+        <label for="message">Message:</label>
+        <div class="input-icon">
+        <textarea id="message" name="message" placeholder="Votre message... (optionnel)"></textarea>
+        </div>
+      </div>
+    </fieldset>
+    <button type="submit" value="Send Invitation" class="submit-button">
+      Envoyer <!-- <i class="fas fa-arrow-alt-circle-right icon"></i> -->
+    </button>
+  </div>
+  </form>
+  <div class="bottom-img">
+    <img src="logo.png" alt="Genesis logo" style="width:13rem; height:13rem;">
+    </div>
+</div>
+</div>
+
+</body>
+</html>
