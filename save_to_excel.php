@@ -1,14 +1,12 @@
 <?php
-require_once("simplex/src/SimpleXLSX.php");
+// Composer autoloader
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Function to save form data to an Excel file
 function saveFormDataToExcel($filename, $formdata)
 {
-    var_dump(file_exists("simplex/src/SimpleXLSX.php"));
-    var_dump(class_exists("SimpleXLSX"));
-
     $xlsx = new SimpleXLSX($filename);
-    $sheet = $xlsx->sheetNames('Table1')[0];
+    $sheet = $xlsx->sheetNames()[0];
     $xlsx->addRow($sheet, [$formdata['Name'], $formdata['Email'], $formdata['Phone'], $formdata['Message']]);
     $xlsx->save($filename);
 }
