@@ -1,4 +1,6 @@
-<?php /** @noinspection ForgottenDebugOutputInspection */
+<?php
+
+declare(strict_types=1);
 
 use Shuchkin\SimpleXLSX;
 
@@ -7,40 +9,42 @@ ini_set('display_errors', true);
 
 require_once __DIR__.'/../src/SimpleXLSX.php';
 
-echo '<h1>Rows with header values as keys</h1>';
-if ($xlsx = SimpleXLSX::parse('books.xlsx')) {
-    // Produce array keys from the array values of 1st array element
-    $header_values = $rows = [];
+function parseXlsxFile(string $filePath): array
+{
+    /** @var SimpleXLSX $xlsx */
+    if (!$xlsx = SimpleXLSX::parse_file($filePath)) {
+        throw new \RuntimeException('Unable to parse XLSX file.');
+    }
+
+    $rows = [];
+    $headerValues = [];
 
     foreach ($xlsx->rows() as $k => $r) {
         if ($k === 0) {
-            $header_values = $r;
+            $headerValues = $r;
             continue;
         }
-        $rows[] = array_combine($header_values, $r);
+
+        if (empty($r)) {
+            continue;
+        }
+
+        try {
+            $rows[] = array_combine($headerValues, $r);
+        } catch (\Exception $e) {
+            // Handle the case where the number of columns in a row is different from the header row
+            continue;
+        }
     }
+
+    return $rows;
+}
+
+$filePath = 'books.xlsx';
+
+try {
+    $rows = parseXlsxFile($filePath);
     print_r($rows);
-/*
-Array
-(
-    [0] => Array
-        (
-            [ISBN] => 618260307
-            [title] => The Hobbit
-            [author] => J. R. R. Tolkien
-            [publisher] => Houghton Mifflin
-            [ctry] => USA
-        )
-
-    [1] => Array
-        (
-            [ISBN] => 908606664
-            [title] => Slinky Malinki
-            [author] => Lynley Dodd
-            [publisher] => Mallinson Rendel
-            [ctry] => NZ
-        )
-
-)
- */
+} catch (\Exception $e) {
+    echo 'An error occurred: '.$e->getMessage();
 }
