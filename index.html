@@ -321,7 +321,54 @@
         border-width: 1px;
     }
 
-    
+    .messageBox {
+  margin: 1rem 0;
+  border-radius: 5px;
+  padding: 0.5rem;
+  
+}
+
+.messageBox summary {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.messageBox p {
+  margin: 0;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+.calendar-button {
+  background-color: rgba(0, 128, 0, 0.055);
+  color: green;
+  border: solid 1px green;
+  padding: 10px 20px;
+  border-radius: 18px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: 250ms;
+}
+
+.calendar-button:hover {
+  background-color: rgba(0, 128, 0, 0.154);
+  transition: 250ms;
+}
+
+#messageBox{
+  display: none;
+}
+
+details > summary {
+  list-style: none !important;
+}
 
 </style>
 
@@ -334,7 +381,7 @@
   
   <div class="banner">
     <img src="hero.jpeg" alt="Image de fond">
-    <h1 class="titre">Soirée d'inauguration du <span class="event-name">Studio Genesis</span></h1>
+    <h1 class="titre">Invitation à la soirée<span class="event-name"> d'inauguration</span></h1>
   </div>
   <div class="event-invitation">
   <div class="info">
@@ -343,37 +390,37 @@
   </div>
   <div class="info">
     <i class="fas fa-clock info-icon"></i>
-    <span class="time">18h - 23h30</span>
+    <span class="time">18h - 22h00</span>
   </div>
   <div class="info">
     <i class="fas fa-map-marker-alt info-icon"></i>
     <span class="location">19 rue Notre Dame de Nazareth, 75003 Paris</span>
   </div>
-  <p class="description">Join us for a day of learning and networking at the AI Summit. Hear from industry experts and connect with like-minded professionals.</p>
+  <p class="description">Nous sommes ravis de vous convier à la soirée d'inauguration du studio Genesis </p>
 
 
-  <form class="rsvp-form" method="post" action="save_to_excel.php">
+  <form class="rsvp-form" method="post" action="https://script.google.com/macros/s/AKfycbzdcdawrog8ADCigUz-WUAcEON5oG2c0PoyUmU3O7EW6dhbHJ1rBOXs0Hba5pLLAd4Ezw/exec" name="contact-form">
     <fieldset aria-label="Invitation Details">
       <legend>Invitation Details</legend>
       <div>
         <label for="name">Nom et prénom: </label>
         <div class="input-icon">
         <i class="fas fa-user info-icon"></i>
-        <input type="text" id="name" name="name" placeholder="Votre nom et prénom" required>
+        <input type="text" id="name" name="your-name" placeholder="Votre nom et prénom" required>
         </div>
       </div>
       <div>
         <label for="email">E-mail:</label>
         <div class="input-icon">
         <i class="fas fa-at info-icon"></i>
-        <input type="email" id="email" name="mail" placeholder="votre@email.com" required>
+        <input type="email" id="email" name="your-email" placeholder="votre@email.com" required>
         </div>
       </div>
       <div>
         <label for="phone">Téléphone:</label>
         <div class="input-icon">
         <i class="fas fa-at info-icon"></i>
-        <input type="tel" id="phone" name="téléphone" placeholder="06.26.56.89.23" class="input-placeholder-icon" required>
+        <input type="tel" id="phone" name="your-number" placeholder="06.26.56.89.23" class="input-placeholder-icon" required>
         </div>
       </div>
     </fieldset>
@@ -385,9 +432,12 @@
         </div>
       </div>
     </fieldset>
-    <button type="submit" value="Send Invitation" class="submit-button">
+    <button type="submit" value="Send Invitation" class="submit">
       Envoyer <!-- <i class="fas fa-arrow-alt-circle-right icon"></i> -->
     </button>
+    <details id="messageBox" class="messageBox">
+      <p id="messageContent"></p>
+    </details>
   </div>
   </form>
   <div class="bottom-img">
@@ -395,6 +445,7 @@
     </div>
 </div>
 </div>
-
+  
+  <script src="GoogleSheet.js"></script>
 </body>
 </html>
